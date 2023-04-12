@@ -2,7 +2,7 @@
 <h4 align="center"><b>Powered specifically for Ekaterina Vi.</b></h4>
 
 <h3>Формирует страницу с карточками музыки для дальнейшего распространения</h3>
-<img src="./img/preview.png" alt="preview">
+<img src="preview.png" alt="preview">
 
 В <i>links.txt</i> закидываете ссылки и запускаете <i>paeserMain.py</i>. <br>
 На выходе получаете <i>index.html</i> который можете скинуть другу :)
