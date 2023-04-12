@@ -1,4 +1,5 @@
 import os
+import base64
 import requests
 from time import sleep
 from bs4 import BeautifulSoup
@@ -36,11 +37,8 @@ def get_song_info(url):
     # Загружаем изображение и сохраняем в папку
     if image_url:
         response = requests.get(image_url)
-        file_name = os.path.basename(image_url)
-        with open(f'img/{title}.png', 'wb') as f:
-            f.write(response.content)
-
-    index.writelines(f'<div class="col-md-3 col-sm-12"><div class="card"><img src="img/{title}.png" class="card-img-top" alt="..."><div class="card-body"><h5 class="card-title">{title}</h5><a href="https://music.yandex.ru/album/{url}" target="_blank" class="btn btn-primary">Яндекс</a></div></div></div>')
+        image_data = base64.b64encode(response.content).decode('utf-8')
+        index.writelines(f'<div class="col-md-3 col-sm-12"><div class="card"><img src="data:image/png;base64,{image_data}" class="card-img-top" alt="..."><div class="card-body"><h5 class="card-title">{title}</h5><a href="https://music.yandex.ru/album/{url}" target="_blank" class="btn btn-primary">Яндекс</a></div></div></div>')
 
 
 with open('links.txt', 'r') as url:
